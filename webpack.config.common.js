@@ -6,10 +6,10 @@ module.exports = {
 
   entry: {
     index: './index'
+    // test: './test'
   },
 
   output: {
-    path: path.resolve(__dirname, 'build'),
     filename: '[name].[chunkhash].bundle.js'
   },
   
@@ -17,12 +17,13 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       enforce: 'pre',
-      loader: 'eslint-loader',
-      exclude: path.join(__dirname, 'node_modules')
+      loader: 'eslint-loader'
+    }, {
+      test: /\.js$/,
+      loader: 'babel-loader'
     }, {
       test: /\.css$/,
-      use: ['css-to-string-loader', 'css-loader', 'postcss-loader'],
-      exclude: path.join(__dirname, 'node_modules')
+      use: ['css-to-string-loader', 'css-loader', 'postcss-loader']
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'url-loader?limit=10000&mimetype=application/font-woff'

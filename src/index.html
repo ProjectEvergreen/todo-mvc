@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en" prefix="og:http://ogp.me/ns#">
 
   <head>
-    <title>Project Evergreen: Todo MVC Example</title>
+    <title>Project Evergreen: Todo App Example</title>
 
     <meta charset='utf-8'>
     <meta name='description' content='Project Evergreen: Todo App Example'/>
@@ -21,16 +21,25 @@
     <meta name="twitter:site" content="@PrjEvergreen" />
     <meta name="twitter:creator" content="@PrjEvergreen" />
 
-    <html lang="en" prefix="og:http://ogp.me/ns#"/>
+    <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Add forwards compatibility for ES5 transpiled web components -->
+    <!-- https://github.com/Polymer/lit-element/issues/72#issuecomment-390894353 -->
+    <!-- Error is a known issue: https://github.com/webcomponents/webcomponentsjs/issues/749 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/custom-elements-es5-adapter.js"></script>
+    
+    <!-- JavaScript polyfill FOR IE11 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.js"></script>
 
+    <!-- Web Components poyfill for Firefox -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-bundle.js"></script>
   </head>
 
   <body>
-
     <x-app></x-app>
     
+    <!-- <x-owen></x-owen> -->
+
   </body>
 
 </html>

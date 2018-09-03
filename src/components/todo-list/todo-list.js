@@ -31,6 +31,7 @@ class TodoListComponent extends LitElement {
     if (ValidationService.isValidTextInput(userInput)) {
       const now = Date.now();
 
+      // TODO chrome errors out here
       this.todos = [...this.todos, {
         completed: false,
         task: userInput,
@@ -63,7 +64,8 @@ class TodoListComponent extends LitElement {
   }
 
   _render(props) {
-    const todos = props.todos;
+    // TODO chrome errors out without these prop checks
+    const todos = props && props.todos ? props.todos : [];
     const completedTodos = todos.filter((todo) => { return todo.completed; });
     const allTodosCompleted = completedTodos.length !== 0 && completedTodos.length === todos.length;
 
@@ -84,12 +86,11 @@ class TodoListComponent extends LitElement {
         </form>
 
         <!-- have to use a dynamic key here to force change detection when passing objects -->
+        <!-- https://github.com/ProjectEvergreen/todo-app/issues/16 -->
         <ol>
           ${repeat(todos, (todo) => Date.now() + todo.id, (todo) => html`
             <li>
-              <x-todo-list-item 
-                todo=${todo}
-              ></x-todo-list-item>
+              <x-todo-list-item todo=${todo}></x-todo-list-item>
             </li>
           `)}
         </ol>
